@@ -36,6 +36,6 @@ jobs:
             echo '# Report'
             echo "Date: $(date)"
             echo "Random: $RANDOM"
-            echo "github: $gh"
+            echo "github: $gh" | tr '\n' ' '
             echo "inputs: $inputs"
           ) >> $GITHUB_STEP_SUMMARY
