@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    permissions: {}
+    runs-on: ubuntu-latest
+    env:
+      inputs: ${{ toJSON(inputs) }}
+      gh: ${{ toJSON(github) }}
+    steps:
+      - name: Run a multi-line script
+        run: |
+          (
+            echo '# Report'
+            echo "Date: $(date)"
+            echo "Random: $RANDOM"
+            echo "github: $gh"
+            echo "inputs: $inputs"
+          ) >> $GITHUB_STEP_SUMMARY
